@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      NEOCRAFT | Premium Web Developer for Startups & Brands
+    </title>
+
+    <!-- SEO Meta Tags untuk Personal Branding Anda -->
+    <meta
+      name="description"
+      content="Ubah ide bisnis startup Anda menjadi platform digital kelas dunia yang aesthetic dan berkonversi tinggi bersama NEOCRAFT."
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Syne (Sangat modern, bold, & aesthetic) & Inter (Sangat bersih untuk dibaca) -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Syne:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons UMD yang stabil -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.435.0/dist/umd/lucide.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Syne', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                obsidian:
+                  '#08080C' /* Hitam pekat modern */,
+                glass:
+                  '#12121A' /* Latar belakang card semi transparan */,
+                neonCyan:
+                  '#00F0FF' /* Biru elektrik cyber */,
+                neonPurple: '#8A2BE2' /* Ungu premium */,
+                goldAccent: '#D4AF37' /* Emas elegan */,
+                textMuted: '#94A3B8' /* Abu-abu teks */,
+              },
+            },
+            animation: {
+              'float-slow':
+                'floatBlob 20s infinite alternate',
+              'float-reverse':
+                'floatBlobReverse 25s infinite alternate',
+              'pulse-slow':
+                'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom keyframes untuk background orbs yang bergerak aesthetic */
+      @keyframes floatBlob {
+        0% {
+          transform: translate(0px, 0px) scale(1);
+        }
+        50% {
+          transform: translate(60px, 80px) scale(1.15);
+        }
+        100% {
+          transform: translate(-40px, 20px) scale(0.9);
+        }
+      }
+      @keyframes floatBlobReverse {
+        0% {
+          transform: translate(0px, 0px) scale(1.1);
+        }
+        50% {
+          transform: translate(-80px, -60px) scale(0.85);
+        }
+        100% {
+          transform: translate(50px, -20px) scale(1.05);
+        }
+      }
+
+      /* Desain Glassmorphism Custom */
+      .glass-card {
+        background: rgba(18, 18, 26, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .glass-nav {
+        background: rgba(8, 8, 12, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* Custom scrollbar super tipis ala tech modern */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #08080c;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #8a2be2;
+        border-radius: 99px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00f0ff;
+      }
+
+      /* Sembunyikan scrollbar horizontal */
+      body {
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-brand-obsidian text-white font-sans antialiased"
+  >
+    <!-- Ambient Glowing Orbs Background (Sangat Aesthetic & Modern) -->
+    <div
+      class="absolute inset-0 overflow-hidden pointer-events-none z-0"
+    >
+      <div
+        class="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-brand-neonCyan/10 blur-[120px] animate-float-slow"
+      ></div>
+      <div
+        class="absolute bottom-[20%] right-[5%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-brand-neonPurple/15 blur-[150px] animate-float-reverse"
+      ></div>
+      <div
+        class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[30vw] h-[30vw] max-w-[400px] rounded-full bg-pink-500/5 blur-[100px] animate-pulse-slow"
+      ></div>
+    </div>
+
+    <!-- 
+        ================================================================
+        FLOATING GLASSMORPHIC NAVBAR
+        ================================================================
+    -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logo Utama (Tech-Creative Brand style) -->
+        <div class="w-1/3 flex justify-start">
+          <a
+            href="#"
+            class="font-display text-xl md:text-2xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-brand-neonCyan to-brand-neonPurple"
+          >
+            NEO_CRAFT.
+          </a>
+        </div>
+
+        <!-- Menu Navigasi Desktop -->
+        <nav
+          class="hidden md:flex items-center justify-center space-x-10 text-xs tracking-widest uppercase font-medium w-1/3"
+        >
+          <!-- EDIT: Sesuaikan tautan menu di bawah ini jika diperlukan -->
+          <a
+            href="#services"
+            class="hover:text-brand-neonCyan transition-all duration-300"
+            >Services</a
+          >
+          <a
+            href="#portfolio"
+            class="hover:text-brand-neonCyan transition-all duration-300"
+            >Works</a
+          >
+          <a
+            href="#estimator"
+            class="hover:text-brand-neonCyan transition-all duration-300 text-brand-neonCyan"
+            >Kalkulator Harga</a
+          >
+          <a
+            href="#about"
+            class="hover:text-brand-neonCyan transition-all duration-300"
+            >About</a
+          >
+        </nav>
+
+        <!-- CTA Kanan (WhatsApp Instan) -->
+        <div
+          class="w-1/3 flex justify-end items-center gap-4"
+        >
+          <a
+            href="https://wa.me/6282124890162?text=Halo%20NeoCraft%2C%20saya%20tertarik%20untuk%20membangun%20website%20startup%20saya."
+            target="_blank"
+            class="hidden sm:inline-flex items-center gap-2 border border-brand-neonCyan/30 text-brand-neonCyan hover:bg-brand-neonCyan hover:text-brand-obsidian transition-all duration-300 px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase"
+          >
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+            <span>Let's Talk</span>
+          </a>
+          <button
+            onclick="toggleMobileMenu()"
+            class="md:hidden text-white hover:text-brand-neonCyan transition-colors"
+          >
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE MENU DRAWER (Menerapkan pengaman klik 'invisible') -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-brand-obsidian/95 z-50 transform translate-x-full invisible transition-all duration-500 ease-in-out md:hidden flex flex-col justify-between p-8"
+    >
+      <div
+        class="flex justify-between items-center border-b border-white/5 pb-6"
+      >
+        <span
+          class="font-display text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-neonCyan to-brand-neonPurple"
+          >NEO_CRAFT.</span
+        >
+        <button
+          onclick="toggleMobileMenu()"
+          class="text-white hover:text-brand-neonCyan"
+        >
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <nav
+        class="flex flex-col space-y-8 my-auto text-center text-lg tracking-widest uppercase font-light"
+      >
+        <button
+          onclick="scrollToSection('services')"
+          class="hover:text-brand-neonCyan transition-colors"
+        >
+          Services
+        </button>
+        <button
+          onclick="scrollToSection('portfolio')"
+          class="hover:text-brand-neonCyan transition-colors"
+        >
+          Works
+        </button>
+        <button
+          onclick="scrollToSection('estimator')"
+          class="hover:text-brand-neonCyan text-brand-neonCyan transition-colors"
+        >
+          Kalkulator Harga
+        </button>
+        <button
+          onclick="scrollToSection('about')"
+          class="hover:text-brand-neonCyan transition-colors"
+        >
+          About
+        </button>
+        <button
+          onclick="scrollToSection('contact')"
+          class="hover:text-brand-neonCyan transition-colors"
+        >
+          Hubungi Saya
+        </button>
+      </nav>
+      <div
+        class="border-t border-white/5 pt-6 text-center text-xs text-brand-textMuted"
+      >
+        <p>Konsultasi WA: 0821-2489-0162</p>
+        <p class="mt-1 text-brand-neonCyan">
+          Bikin Startup-mu Kelihatan Keren
+        </p>
+      </div>
+    </div>
+
+    <!-- 
+        ================================================================
+        HERO SECTION (ATTENTION & MARKETING HOOK)
+        ================================================================
+    -->
+    <section
+      class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6 relative z-10"
+    >
+      <div class="container mx-auto max-w-5xl text-center">
+        <!-- Badge target pasar anak muda -->
+        <div
+          class="inline-flex items-center gap-2 bg-brand-neonPurple/10 border border-brand-neonPurple/20 px-4 py-1.5 rounded-full mb-8 animate-pulse-slow"
+        >
+          <span
+            class="w-2 h-2 bg-brand-neonCyan rounded-full"
+          ></span>
+          <span
+            class="text-[10px] md:text-xs tracking-widest uppercase font-bold text-brand-neonCyan"
+            >Untuk Calon Pengusaha Muda & Startups</span
+          >
+        </div>
+
+        <!-- Headline utama berenergi tinggi -->
+        <h1
+          class="font-display text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tight leading-[0.95] mb-8 text-white"
+        >
+          WE DON'T JUST BUILD
+          <br class="hidden md:inline" />
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-brand-neonCyan via-indigo-400 to-brand-neonPurple"
+            >WEBSITES.</span
+          >
+          <br />
+          WE BUILD
+          <span
+            class="underline decoration-brand-neonCyan decoration-wavy"
+            >CASH MACHINES.</span
+          >
+        </h1>
+
+        <!-- Subheadline fokus hasil bisnis -->
+        <p
+          class="text-brand-textMuted text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-12 uppercase tracking-widest font-light leading-relaxed"
+        >
+          Tinggalkan desain kuno yang membosankan. Saatnya
+          buat bisnis baru Anda terlihat
+          <strong class="text-white font-bold"
+            >mahal, premium, dan menarik ribuan
+            transaksi</strong
+          >
+          sejak hari pertama peluncuran.
+        </p>
+
+        <!-- Tombol aksi dinamis -->
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <a
+            href="#estimator"
+            class="w-full sm:w-auto bg-gradient-to-r from-brand-neonCyan to-brand-neonPurple text-brand-obsidian font-extrabold tracking-widest text-xs uppercase px-10 py-4.5 rounded-full hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300"
+          >
+            Cek Kalkulator Harga
+          </a>
+          <a
+            href="#portfolio"
+            class="w-full sm:w-auto border border-white/10 hover:border-brand-neonCyan text-white px-10 py-4.5 text-xs font-bold uppercase tracking-widest rounded-full hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            Lihat Portofolio
+          </a>
+        </div>
+
+        <!-- Social proof instan / trust factor untuk pemula -->
+        <div class="mt-24 border-t border-white/5 pt-12">
+          <p
+            class="text-[10px] uppercase tracking-widest text-brand-textMuted mb-6"
+          >
+            Expertise Stack yang Saya Gunakan
+          </p>
+          <div
+            class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-45 grayscale hover:grayscale-0 transition-all duration-500"
+          >
+            <span
+              class="font-display text-sm md:text-lg tracking-widest font-extrabold"
+              >TAILWIND CSS</span
+            >
+            <span
+              class="font-display text-sm md:text-lg tracking-widest font-extrabold"
+              >REACT & NEXTJS</span
+            >
+            <span
+              class="font-display text-sm md:text-lg tracking-widest font-extrabold"
+              >NODE.JS</span
+            >
+            <span
+              class="font-display text-sm md:text-lg tracking-widest font-extrabold"
+              >SHOPIFY & CMS</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        SERVICES SECTION (INTEREST)
+        ================================================================
+    -->
+    <section
+      id="services"
+      class="py-28 bg-brand-obsidian/30 relative z-10 border-t border-white/5"
+    >
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div
+          class="text-center md:text-left max-w-2xl mb-16"
+        >
+          <span
+            class="text-brand-neonCyan uppercase tracking-[0.3em] text-xs font-bold block mb-4"
+            >Layanan Unggulan</span
+          >
+          <h2
+            class="font-display text-3xl md:text-5xl font-extrabold text-white"
+          >
+            Apa yang Anda Butuhkan untuk Memulai?
+          </h2>
+          <div
+            class="w-16 h-1 bg-brand-neonPurple mt-6 hidden md:block"
+          ></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="glass-card p-8 rounded-2xl group hover:border-brand-neonCyan/30 transition-all duration-500 hover:-translate-y-2"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-brand-neonCyan/10 flex items-center justify-center text-brand-neonCyan mb-6 group-hover:bg-brand-neonCyan group-hover:text-brand-obsidian transition-all duration-500"
+            >
+              <i data-lucide="layout" class="w-6 h-6"></i>
+            </div>
+            <h3
+              class="font-display text-xl font-bold text-white mb-4"
+            >
+              High-Converting Landing Page
+            </h3>
+            <p
+              class="text-brand-textMuted text-xs leading-relaxed font-light"
+            >
+              Sempurna untuk validasi produk baru Anda.
+              Landing page super cepat dengan struktur
+              penulisan copywriting yang memikat pengunjung
+              menjadi pembeli aktif.
+            </p>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="glass-card p-8 rounded-2xl group hover:border-brand-neonPurple/30 transition-all duration-500 hover:-translate-y-2"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-brand-neonPurple/10 flex items-center justify-center text-brand-neonPurple mb-6 group-hover:bg-brand-neonPurple group-hover:text-white transition-all duration-500"
+            >
+              <i
+                data-lucide="shopping-cart"
+                class="w-6 h-6"
+              ></i>
+            </div>
+            <h3
+              class="font-display text-xl font-bold text-white mb-4"
+            >
+              Aesthetic E-Commerce
+            </h3>
+            <p
+              class="text-brand-textMuted text-xs leading-relaxed font-light"
+            >
+              Mulai butik fashion, brand kosmetik, atau f&b
+              secara online dengan sistem manajemen toko
+              yang super mudah, integrasi payment gateway,
+              dan tampilan premium.
+            </p>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="glass-card p-8 rounded-2xl group hover:border-brand-neonCyan/30 transition-all duration-500 hover:-translate-y-2"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-brand-neonCyan/10 flex items-center justify-center text-brand-neonCyan mb-6 group-hover:bg-brand-neonCyan group-hover:text-brand-obsidian transition-all duration-500"
+            >
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <h3
+              class="font-display text-xl font-bold text-white mb-4"
+            >
+              Creative Brand Interactive
+            </h3>
+            <p
+              class="text-brand-textMuted text-xs leading-relaxed font-light"
+            >
+              Website portofolio interaktif dan kustom
+              dengan animasi berkelas tinggi yang membuat
+              agensi, brand personal, atau studio kreatif
+              Anda unggul jauh di atas kompetitor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        PORTFOLIO WORK SECTION (DESIRE)
+        ================================================================
+    -->
+    <section
+      id="portfolio"
+      class="py-28 bg-brand-obsidian/20 relative z-10 border-t border-white/5"
+    >
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+        >
+          <div class="max-w-xl text-center md:text-left">
+            <span
+              class="text-brand-neonPurple uppercase tracking-[0.3em] text-xs font-bold block mb-4"
+              >Karya Pilihan</span
+            >
+            <h2
+              class="font-display text-3xl md:text-5xl font-extrabold text-white"
+            >
+              Project yang Mendobrak Pasar
+            </h2>
+          </div>
+          <!-- Filter Kategori Portofolio -->
+          <div
+            class="flex flex-wrap gap-2 justify-center"
+            id="portfolio-filters"
+          >
+            <button
+              onclick="filterPortfolio('all')"
+              class="portfolio-btn active px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-full border border-brand-neonCyan bg-brand-neonCyan text-brand-obsidian transition-all duration-300"
+            >
+              Semua
+            </button>
+            <button
+              onclick="filterPortfolio('landing')"
+              class="portfolio-btn px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-full border border-white/10 text-white hover:border-brand-neonCyan transition-all duration-300"
+            >
+              Landing Page
+            </button>
+            <button
+              onclick="filterPortfolio('ecommerce')"
+              class="portfolio-btn px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-full border border-white/10 text-white hover:border-brand-neonCyan transition-all duration-300"
+            >
+              E-Commerce
+            </button>
+            <button
+              onclick="filterPortfolio('creative')"
+              class="portfolio-btn px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-full border border-white/10 text-white hover:border-brand-neonCyan transition-all duration-300"
+            >
+              Creative Web
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid Portofolio -->
+        <div
+          id="portfolio-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <!-- Diisi Dinamis oleh Javascript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        INTERACTIVE PACKAGE & COST ESTIMATOR (THE CONVERSION MACHINE)
+        ================================================================
+    -->
+    <section
+      id="estimator"
+      class="py-28 bg-gradient-to-b from-brand-obsidian/10 to-brand-obsidian/80 relative z-10 border-t border-white/5"
+    >
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span
+            class="text-brand-neonCyan uppercase tracking-[0.4em] text-xs font-bold block mb-4"
+            >Rencanakan Budget-mu</span
+          >
+          <h2
+            class="font-display text-3xl md:text-5xl font-extrabold text-white"
+          >
+            Kalkulator Harga Instan
+          </h2>
+          <p
+            class="text-brand-textMuted text-xs md:text-sm font-light mt-4 leading-relaxed"
+          >
+            Kami menghargai transparansi. Pilih fitur yang
+            dibutuhkan bisnis baru Anda sekarang, dan sistem
+            akan langsung menghitung estimasi biaya
+            investasinya.
+          </p>
+          <div
+            class="w-16 h-1 bg-brand-neonCyan mx-auto mt-6"
+          ></div>
+        </div>
+
+        <!-- Box Kalkulator Interaktif -->
+        <div
+          class="glass-card rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden border border-brand-neonPurple/20"
+        >
+          <div
+            class="absolute -right-16 -top-16 w-40 h-40 bg-brand-neonPurple/10 rounded-full blur-[40px]"
+          ></div>
+
+          <h3
+            class="font-display text-2xl text-white font-bold mb-8 flex items-center gap-3"
+          >
+            <i
+              data-lucide="sliders"
+              class="text-brand-neonCyan w-6 h-6"
+            ></i>
+            Sesuaikan Kebutuhan Bisnis Anda
+          </h3>
+
+          <!-- Pilihan Tipe Proyek Utama -->
+          <div class="mb-10">
+            <label
+              class="block text-xs uppercase tracking-widest text-brand-textMuted mb-4 font-bold"
+              >1. Pilih Tipe Landing Page / Website
+              Utama</label
+            >
+            <div
+              class="grid grid-cols-1 md:grid-cols-3 gap-4"
+            >
+              <label class="cursor-pointer relative">
+                <input
+                  type="radio"
+                  name="project-type"
+                  value="landing"
+                  checked
+                  onchange="calculatePrice()"
+                  class="sr-only peer"
+                />
+                <div
+                  class="border border-white/10 peer-checked:border-brand-neonCyan peer-checked:bg-brand-neonCyan/5 p-6 rounded-2xl transition-all duration-300"
+                >
+                  <span
+                    class="block font-bold text-sm text-white mb-1"
+                    >Standard Landing Page</span
+                  >
+                  <span
+                    class="block text-[10px] text-brand-textMuted"
+                    >Rp 3.500.000</span
+                  >
+                </div>
+              </label>
+              <label class="cursor-pointer relative">
+                <input
+                  type="radio"
+                  name="project-type"
+                  value="ecommerce"
+                  onchange="calculatePrice()"
+                  class="sr-only peer"
+                />
+                <div
+                  class="border border-white/10 peer-checked:border-brand-neonCyan peer-checked:bg-brand-neonCyan/5 p-6 rounded-2xl transition-all duration-300"
+                >
+                  <span
+                    class="block font-bold text-sm text-white mb-1"
+                    >E-Commerce Boutique</span
+                  >
+                  <span
+                    class="block text-[10px] text-brand-textMuted"
+                    >Rp 6.000.000</span
+                  >
+                </div>
+              </label>
+              <label class="cursor-pointer relative">
+                <input
+                  type="radio"
+                  name="project-type"
+                  value="custom-creative"
+                  onchange="calculatePrice()"
+                  class="sr-only peer"
+                />
+                <div
+                  class="border border-white/10 peer-checked:border-brand-neonCyan peer-checked:bg-brand-neonCyan/5 p-6 rounded-2xl transition-all duration-300"
+                >
+                  <span
+                    class="block font-bold text-sm text-white mb-1"
+                    >Custom Creative Agency</span
+                  >
+                  <span
+                    class="block text-[10px] text-brand-textMuted"
+                    >Rp 8.500.000</span
+                  >
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Add-on Fitur Tambahan -->
+          <div class="mb-10">
+            <label
+              class="block text-xs uppercase tracking-widest text-brand-textMuted mb-4 font-bold"
+              >2. Tambahkan Fitur Pendukung
+              (Opsional)</label
+            >
+            <div class="space-y-4">
+              <!-- Addon 1 -->
+              <label
+                class="flex items-center justify-between p-5 border border-white/5 rounded-2xl cursor-pointer hover:bg-white/2 transition-colors"
+              >
+                <div class="flex items-center gap-4">
+                  <input
+                    type="checkbox"
+                    id="addon-animation"
+                    onchange="calculatePrice()"
+                    class="w-5 h-5 accent-brand-neonPurple rounded-md"
+                  />
+                  <div>
+                    <span
+                      class="block text-xs md:text-sm font-bold text-white"
+                      >Animasi 3D & Efek Interaktif Tingkat
+                      Tinggi</span
+                    >
+                    <span
+                      class="block text-[10px] text-brand-textMuted"
+                      >Tampilan ultra-modern yang memukau
+                      anak muda</span
+                    >
+                  </div>
+                </div>
+                <span
+                  class="text-xs font-bold text-brand-neonCyan flex-shrink-0 ml-4"
+                  >+ Rp 1.500.000</span
+                >
+              </label>
+
+              <!-- Addon 2 -->
+              <label
+                class="flex items-center justify-between p-5 border border-white/5 rounded-2xl cursor-pointer hover:bg-white/2 transition-colors"
+              >
+                <div class="flex items-center gap-4">
+                  <input
+                    type="checkbox"
+                    id="addon-seo"
+                    onchange="calculatePrice()"
+                    class="w-5 h-5 accent-brand-neonPurple rounded-md"
+                  />
+                  <div>
+                    <span
+                      class="block text-xs md:text-sm font-bold text-white"
+                      >Premium SEO & Kecepatan Maksimal
+                      (Page Speed 95+)</span
+                    >
+                    <span
+                      class="block text-[10px] text-brand-textMuted"
+                      >Muncul di pencarian Google utama
+                      dengan mudah</span
+                    >
+                  </div>
+                </div>
+                <span
+                  class="text-xs font-bold text-brand-neonCyan flex-shrink-0 ml-4"
+                  >+ Rp 1.000.000</span
+                >
+              </label>
+
+              <!-- Addon 3 -->
+              <label
+                class="flex items-center justify-between p-5 border border-white/5 rounded-2xl cursor-pointer hover:bg-white/2 transition-colors"
+              >
+                <div class="flex items-center gap-4">
+                  <input
+                    type="checkbox"
+                    id="addon-payment"
+                    onchange="calculatePrice()"
+                    class="w-5 h-5 accent-brand-neonPurple rounded-md"
+                  />
+                  <div>
+                    <span
+                      class="block text-xs md:text-sm font-bold text-white"
+                      >Integrasi Gerbang Pembayaran Otomatis
+                      (Midtrans/Xendit)</span
+                    >
+                    <span
+                      class="block text-[10px] text-brand-textMuted"
+                      >Terima transaksi dari bank mana saja
+                      secara otomatis</span
+                    >
+                  </div>
+                </div>
+                <span
+                  class="text-xs font-bold text-brand-neonCyan flex-shrink-0 ml-4"
+                  >+ Rp 2.000.000</span
+                >
+              </label>
+            </div>
+          </div>
+
+          <!-- Bagian Total & Konversi Utama -->
+          <div
+            class="border-t border-white/10 pt-8 mt-10 flex flex-col md:flex-row justify-between items-center gap-6"
+          >
+            <div class="text-center md:text-left">
+              <span
+                class="text-[10px] uppercase tracking-widest text-brand-textMuted"
+                >Estimasi Total Investasi</span
+              >
+              <h4
+                id="estimated-total-display"
+                class="font-display text-3xl md:text-4xl font-extrabold text-brand-neonCyan mt-1"
+              >
+                Rp 3.500.000
+              </h4>
+              <span
+                class="text-[9px] text-brand-textMuted block mt-1"
+                >*Sudah termasuk domain premium .com &
+                hosting berkecepatan tinggi selama 1 tahun
+                pertama</span
+              >
+            </div>
+
+            <button
+              onclick="launchCalculatedProject()"
+              class="w-full md:w-auto bg-gradient-to-r from-brand-neonCyan to-brand-neonPurple text-brand-obsidian font-extrabold tracking-widest text-xs uppercase px-10 py-5 rounded-full hover:shadow-[0_0_25px_rgba(138,43,226,0.3)] transition-all duration-300 flex items-center justify-center gap-3"
+            >
+              <i data-lucide="rocket" class="w-4 h-4"></i>
+              <span>Ambil Paket Ini</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        ABOUT SECTION (BUILDING TRUST)
+        ================================================================
+    -->
+    <section
+      id="about"
+      class="py-28 bg-brand-obsidian/10 relative z-10 border-t border-white/5"
+    >
+      <div class="container mx-auto px-6 max-w-5xl">
+        <div
+          class="flex flex-col md:flex-row items-center gap-16"
+        >
+          <!-- Sisi Kiri: Foto Kreatif Developer -->
+          <div class="md:w-5/12">
+            <div
+              class="relative group aspect-[4/5] overflow-hidden rounded-3xl border-4 border-white/5 shadow-2xl"
+            >
+              <!-- EDIT: Ganti URL di bawah dengan foto professional portrait Anda -->
+              <img
+                src="quality_restoration_20260527164257334(3).jpg"
+                alt="Abdul Aziz Muqorrobin - Personal Branding Developer"
+                class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+              />
+              <!-- Gimmick / Floating Badge -->
+              <div
+                class="absolute bottom-6 left-6 right-6 bg-brand-obsidian/90 backdrop-blur-md p-4 border border-white/10 rounded-2xl"
+              >
+                <span
+                  class="block text-xs font-bold text-brand-neonCyan uppercase tracking-widest mb-1"
+                  >Status Ketersediaan</span
+                >
+                <span class="text-[10px] text-white/80"
+                  >Menerima Project Baru Bulan Ini</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Sisi Kanan: Bio Pembuat & Filosofi target anak muda -->
+          <div class="md:w-7/12 space-y-6">
+            <span
+              class="text-brand-neonPurple uppercase tracking-[0.3em] text-xs font-bold block"
+              >Kenali Co-Pilot Anda</span
+            >
+            <h2
+              class="font-display text-3xl md:text-5xl font-extrabold text-white leading-tight"
+            >
+              Saya Membantu Startups Naik Kelas Melalui Web
+              Design Eksklusif.
+            </h2>
+            <p
+              class="text-brand-textMuted text-xs md:text-sm font-light leading-relaxed"
+            >
+              Halo! Saya
+              <strong class="text-white"
+                >Abdul Aziz Muqorrobin</strong
+              >, seorang Web Developer & Brand Designer
+              independen yang mendedikasikan keahlian saya
+              untuk memberdayakan generasi baru pengusaha
+              muda di Indonesia.
+            </p>
+            <p
+              class="text-brand-textMuted text-xs md:text-sm font-light leading-relaxed"
+            >
+              Saya mengerti bahwa modal bisnis di awal
+              sangat berharga. Itulah mengapa saya tidak
+              hanya menulis kode, tetapi juga menganalisis
+              apa yang akan membuat prospek produk Anda
+              tampak fantastis secara visual dan mudah
+              digunakan di ponsel pintar. Mari berkolaborasi
+              dan ciptakan ekosistem digital impian Anda
+              hari ini.
+            </p>
+
+            <div class="pt-4 flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="inline-flex items-center text-xs uppercase tracking-widest font-bold text-white border-b-2 border-brand-neonCyan pb-2 hover:text-brand-neonPurple hover:border-brand-neonPurple transition-all group"
+              >
+                Hubungi Langsung
+                <i
+                  data-lucide="arrow-right"
+                  class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        FORM HUBUNGI KAMI & CHAT WA VIP (ACTION)
+        ================================================================
+    -->
+    <section
+      id="contact"
+      class="py-28 bg-brand-obsidian relative z-10 border-t border-white/5"
+    >
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span
+            class="text-brand-neonCyan uppercase tracking-[0.3em] text-xs font-bold block mb-4"
+            >Mulai Sekarang</span
+          >
+          <h2
+            class="font-display text-3xl md:text-5xl font-extrabold text-white"
+          >
+            Hubungi Saya Secara Pribadi
+          </h2>
+          <div
+            class="w-16 h-0.5 bg-brand-neonCyan mx-auto mt-6"
+          ></div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-12 gap-12"
+        >
+          <!-- Sisi Form Kirim Pesanan Email -->
+          <div
+            class="md:col-span-7 bg-brand-glass p-8 rounded-3xl border border-white/5 shadow-2xl"
+          >
+            <h3
+              class="font-display text-xl mb-6 text-white font-bold"
+            >
+              Kirim Formulir Project
+            </h3>
+
+            <form
+              id="contact-form"
+              onsubmit="handleContactSubmit(event)"
+              class="space-y-6"
+            >
+              <div>
+                <label
+                  class="block text-[10px] uppercase tracking-widest text-brand-textMuted mb-2 font-bold"
+                  for="sender-name"
+                  >Nama Lengkap / Nama Bisnis
+                  <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  id="sender-name"
+                  required
+                  class="w-full px-4 py-3 bg-brand-obsidian border border-white/10 rounded-xl focus:outline-none focus:border-brand-neonCyan text-xs text-white"
+                  placeholder="Contoh: Brand Clothing XYZ"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-[10px] uppercase tracking-widest text-brand-textMuted mb-2 font-bold"
+                  for="sender-email"
+                  >Alamat Email
+                  <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="email"
+                  id="sender-email"
+                  required
+                  class="w-full px-4 py-3 bg-brand-obsidian border border-white/10 rounded-xl focus:outline-none focus:border-brand-neonCyan text-xs text-white"
+                  placeholder="Contoh: halo@xyz.com"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-[10px] uppercase tracking-widest text-brand-textMuted mb-2 font-bold"
+                  for="sender-desc"
+                  >Jelaskan Ide Bisnis / Website yang
+                  Diinginkan
+                  <span class="text-red-500">*</span></label
+                >
+                <textarea
+                  id="sender-desc"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-3 bg-brand-obsidian border border-white/10 rounded-xl focus:outline-none focus:border-brand-neonCyan text-xs text-white"
+                  placeholder="Ceritakan produk yang ingin dijual, target pasar Anda, dan referensi website yang Anda sukai..."
+                ></textarea>
+              </div>
+
+              <div
+                class="bg-brand-obsidian p-4 rounded-xl border-l-2 border-brand-neonCyan text-[11px] text-brand-textMuted leading-relaxed"
+              >
+                <strong class="text-white font-bold"
+                  >Kirim Otomatis via Email:</strong
+                ><br />
+                Saat Anda menekan tombol di bawah, draf
+                surel otomatis akan tersusun rapi menuju ke
+                email developer:
+                <strong class="text-brand-neonCyan"
+                  >azizmuqorrobin412@gmail.com</strong
+                >, dan otomatis dialihkan ke chat WA asisten
+                untuk validasi cepat.
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-brand-neonCyan to-brand-neonPurple text-brand-obsidian font-extrabold tracking-widest text-xs uppercase py-4 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all duration-300"
+              >
+                Kirim Ide & Buka Chat WhatsApp
+              </button>
+            </form>
+          </div>
+
+          <!-- Sisi Detail Klien VIP -->
+          <div
+            class="md:col-span-5 space-y-6 flex flex-col justify-between"
+          >
+            <div
+              class="bg-brand-glass p-8 rounded-3xl border border-white/5 shadow-2xl space-y-6"
+            >
+              <h3
+                class="font-display text-xl text-white font-bold"
+              >
+                Informasi Kontak
+              </h3>
+
+              <div class="flex gap-4 items-start">
+                <div
+                  class="w-10 h-10 rounded-lg bg-brand-neonCyan/10 flex items-center justify-center text-brand-neonCyan flex-shrink-0"
+                >
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span
+                    class="block text-[10px] uppercase tracking-widest text-brand-textMuted"
+                    >Email Resmi</span
+                  >
+                  <span class="text-xs text-white font-bold"
+                    >azizmuqorrobin412@gmail.com</span
+                  >
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <div
+                  class="w-10 h-10 rounded-lg bg-brand-neonPurple/10 flex items-center justify-center text-brand-neonPurple flex-shrink-0"
+                >
+                  <i
+                    data-lucide="phone"
+                    class="w-5 h-5"
+                  ></i>
+                </div>
+                <div>
+                  <span
+                    class="block text-[10px] uppercase tracking-widest text-brand-textMuted"
+                    >WhatsApp Pribadi</span
+                  >
+                  <span class="text-xs text-white font-bold"
+                    >0821-2489-0162</span
+                  >
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <div
+                  class="w-10 h-10 rounded-lg bg-brand-neonCyan/10 flex items-center justify-center text-brand-neonCyan flex-shrink-0"
+                >
+                  <i
+                    data-lucide="map-pin"
+                    class="w-5 h-5"
+                  ></i>
+                </div>
+                <div>
+                  <span
+                    class="block text-[10px] uppercase tracking-widest text-brand-textMuted"
+                    >Lokasi Workshop</span
+                  >
+                  <span class="text-xs text-white font-bold"
+                    >Jakarta & Tangerang, Indonesia</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Box Kreatif -->
+            <div
+              class="bg-gradient-to-r from-brand-neonCyan/10 to-brand-neonPurple/10 p-8 rounded-3xl border border-brand-neonCyan/20 relative overflow-hidden"
+            >
+              <div
+                class="absolute -right-12 -bottom-12 w-28 h-28 bg-brand-neonCyan/10 rounded-full blur-2xl"
+              ></div>
+              <h4
+                class="font-display text-lg text-white font-bold mb-2"
+              >
+                Butuh Konsultasi Kilat?
+              </h4>
+              <p
+                class="text-[11px] text-brand-textMuted leading-relaxed mb-4"
+              >
+                Punya pertanyaan seputar teknologi web,
+                hosting, atau manajemen domain? Chat
+                langsung di WA.
+              </p>
+              <a
+                href="https://wa.me/6282124890162"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-neonCyan hover:text-white transition-colors"
+              >
+                <span>Mulai Obrolan VIP</span>
+                <i
+                  data-lucide="arrow-right"
+                  class="w-4 h-4"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+        ================================================================
+        AESTHETIC PORTFOLIO FOOTER
+        ================================================================
+    -->
+    <footer
+      class="bg-brand-obsidian py-16 border-t border-white/5 relative z-10 text-xs text-brand-textMuted"
+    >
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-8 pb-12 border-b border-white/5"
+        >
+          <div>
+            <span
+              class="font-display text-2xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-brand-neonCyan to-brand-neonPurple"
+              >NEO_CRAFT.</span
+            >
+            <p
+              class="mt-2 text-[11px] text-brand-textMuted max-w-sm"
+            >
+              Membantu generasi baru startup, agensi, dan
+              butik online menguasai pasar digital melalui
+              inovasi web aesthetic kelas atas.
+            </p>
+          </div>
+
+          <div class="flex space-x-6">
+            <a
+              href="https://wa.me/6282124890162"
+              target="_blank"
+              class="hover:text-brand-neonCyan transition-all"
+              ><i
+                data-lucide="instagram"
+                class="w-5 h-5"
+              ></i
+            ></a>
+            <a
+              href="https://wa.me/6282124890162"
+              target="_blank"
+              class="hover:text-brand-neonCyan transition-all"
+              ><i data-lucide="twitter" class="w-5 h-5"></i
+            ></a>
+            <a
+              href="https://wa.me/6282124890162"
+              target="_blank"
+              class="hover:text-brand-neonCyan transition-all"
+              ><i data-lucide="github" class="w-5 h-5"></i
+            ></a>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px]"
+        >
+          <p>
+            &copy; 2026 NEO_CRAFT Personal Branding. Seluruh
+            Hak Cipta Dilindungi.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="hover:text-white"
+              >Syarat & Ketentuan</a
+            >
+            <a href="#" class="hover:text-white"
+              >Kebijakan Privasi</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notifikasi (Glow design) -->
+    <div
+      id="toast-message"
+      class="fixed bottom-6 right-6 bg-brand-glass text-white border-l-4 border-brand-neonCyan py-4 px-6 shadow-2xl z-50 transform translate-y-24 opacity-0 transition-all duration-500 max-w-sm rounded-xl"
+    >
+      <div class="flex items-center gap-3">
+        <i
+          data-lucide="check-circle-2"
+          class="text-brand-neonCyan w-5 h-5 flex-shrink-0"
+        ></i>
+        <p
+          id="toast-text"
+          class="text-[10px] font-bold tracking-wider uppercase"
+        ></p>
+      </div>
+    </div>
+
+    <!-- 
+        ================================================================
+        SISTEM CORE JAVASCRIPT & ESTIMATOR ALGORITHM
+        ================================================================
+    -->
+    <script>
+      // Database Portofolio (Aesthetic & Berfokus pada Startups & Gen Z Brands)
+      const portfolioData = [
+        {
+          id: 'p-01',
+          title: 'Oasis Cosmetic Boutique',
+          category: 'ecommerce',
+          image:
+            'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1000&auto=format&fit=crop',
+          client: 'Oasis Brand',
+          desc: 'Toko online kosmetik premium dengan konsep minimalis glassmorphism yang mengutamakan visual produk beresolusi tinggi.',
+        },
+        {
+          id: 'p-02',
+          title: 'Alpha Agency Interactive',
+          category: 'creative',
+          image:
+            'https://images.unsplash.com/photo-1542744094-3a31f103e35f?q=80&w=1000&auto=format&fit=crop',
+          client: 'Alpha Creative Studio',
+          desc: 'Website company profile agensi kreatif interaktif lengkap dengan transisi halus 3D dan tata letak seni asimetris.',
+        },
+        {
+          id: 'p-03',
+          title: 'Nood Wear Apparel',
+          category: 'ecommerce',
+          image:
+            'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop',
+          client: 'Nood Wear Jakarta',
+          desc: 'E-commerce fashion modern dengan pengoptimalan performa mobile 99% dan integrasi pembayaran bank otomatis instan.',
+        },
+        {
+          id: 'p-04',
+          title: 'Solitude Studio Portfolio',
+          category: 'creative',
+          image:
+            'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop',
+          client: 'Solitude Studio',
+          desc: 'Kumpulan showcase portofolio interaktif untuk fotografer arsitektur premium dengan fokus kesederhanaan monokrom.',
+        },
+        {
+          id: 'p-05',
+          title: 'Z-Gen Energy Booster',
+          category: 'landing',
+          image:
+            'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=1000&auto=format&fit=crop',
+          client: 'Z-Gen Corp',
+          desc: 'Landing page produk satu halaman untuk suplemen kesehatan anak muda, berorientasi penuh pada konversi tombol beli.',
+        },
+        {
+          id: 'p-06',
+          title: 'Hype Streetwear Shop',
+          category: 'ecommerce',
+          image:
+            'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000&auto=format&fit=crop',
+          client: 'Hype Wear',
+          desc: 'Platform toko online streetwear retail modern terintegrasi stok gudang real-time serta fitur obrolan pelanggan langsung.',
+        },
+      ];
+
+      // Memuat halaman pertama kali
+      window.onload = function () {
+        // Render Lucide Icons
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+        renderPortfolioGrid('all');
+        calculatePrice();
+      };
+
+      // Buka/Tutup Menu Seluler
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu.classList.contains('translate-x-full')) {
+          menu.classList.remove(
+            'translate-x-full',
+            'invisible',
+          );
+        } else {
+          menu.classList.add(
+            'translate-x-full',
+            'invisible',
+          );
+        }
+      }
+
+      // Transisi scroll mulus untuk mobile menu
+      function scrollToSection(sectionId) {
+        toggleMobileMenu();
+        const section = document.getElementById(sectionId);
+        if (section) {
+          setTimeout(() => {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }, 300);
+        }
+      }
+
+      // Merender Portofolio Berdasarkan Filter
+      function renderPortfolioGrid(filter) {
+        const grid = document.getElementById(
+          'portfolio-grid',
+        );
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        const filteredData =
+          filter === 'all'
+            ? portfolioData
+            : portfolioData.filter(
+                (item) => item.category === filter,
+              );
+
+        filteredData.forEach((item) => {
+          const card = `
+                    <div class="glass-card rounded-2xl overflow-hidden group hover:border-brand-neonCyan/20 transition-all duration-500 shadow-xl">
+                        <div class="relative overflow-hidden aspect-[4/3] bg-brand-glass">
+                            <img src="${item.image}" alt="${item.title}" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-750 scale-100 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-brand-obsidian/30 group-hover:bg-brand-obsidian/10 transition-all"></div>
+                            
+                            <!-- Kategori Badge -->
+                            <span class="absolute top-4 left-4 bg-brand-obsidian/80 backdrop-blur-md text-[9px] uppercase tracking-widest font-bold text-brand-neonCyan py-1 px-3.5 rounded-full border border-brand-neonCyan/10">
+                                ${item.category === 'ecommerce' ? 'E-Commerce' : item.category === 'landing' ? 'Landing Page' : 'Creative Web'}
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <span class="text-[9px] text-brand-textMuted uppercase tracking-wider font-semibold block">${item.client}</span>
+                            <h3 class="font-display text-lg text-white font-bold group-hover:text-brand-neonCyan transition-colors">${item.title}</h3>
+                            <p class="text-brand-textMuted text-xs leading-relaxed font-light">${item.desc}</p>
+                        </div>
+                    </div>
+                `;
+          grid.innerHTML += card;
+        });
+      }
+
+      // Logika Filter Portofolio
+      function filterPortfolio(category) {
+        const buttons = document.querySelectorAll(
+          '#portfolio-filters button',
+        );
+        buttons.forEach((btn) => {
+          btn.classList.remove(
+            'active',
+            'bg-brand-neonCyan',
+            'text-brand-obsidian',
+          );
+          btn.classList.add(
+            'border-white/10',
+            'text-white',
+          );
+        });
+
+        event.currentTarget.classList.add(
+          'active',
+          'bg-brand-neonCyan',
+          'text-brand-obsidian',
+        );
+        event.currentTarget.classList.remove(
+          'border-white/10',
+          'text-white',
+        );
+
+        renderPortfolioGrid(category);
+      }
+
+      // ALGORITMA KALKULATOR HARGA (REAL-TIME ESTIMATOR)
+      let computedTotal = 3500000;
+      let selectedPackageName = 'Standard Landing Page';
+      let selectedAddons = [];
+
+      function calculatePrice() {
+        const projectTypeElement = document.querySelector(
+          'input[name="project-type"]:checked',
+        );
+        if (!projectTypeElement) return;
+
+        let basePrice = 3500000;
+        const projectType = projectTypeElement.value;
+
+        if (projectType === 'landing') {
+          basePrice = 3500000;
+          selectedPackageName = 'Standard Landing Page';
+        } else if (projectType === 'ecommerce') {
+          basePrice = 6000000;
+          selectedPackageName = 'E-Commerce Boutique';
+        } else if (projectType === 'custom-creative') {
+          basePrice = 8500000;
+          selectedPackageName =
+            'Custom Creative Agency Page';
+        }
+
+        selectedAddons = [];
+        let addonsPrice = 0;
+
+        if (
+          document.getElementById('addon-animation').checked
+        ) {
+          addonsPrice += 1500000;
+          selectedAddons.push('Premium Animation Pack');
+        }
+        if (document.getElementById('addon-seo').checked) {
+          addonsPrice += 1000000;
+          selectedAddons.push('Full Speed & SEO Pack');
+        }
+        if (
+          document.getElementById('addon-payment').checked
+        ) {
+          addonsPrice += 2000000;
+          selectedAddons.push(
+            'Automatic Payment Gateway Integration',
+          );
+        }
+
+        computedTotal = basePrice + addonsPrice;
+
+        // Update Tampilan Harga
+        const totalDisplay = document.getElementById(
+          'estimated-total-display',
+        );
+        totalDisplay.innerText = new Intl.NumberFormat(
+          'id-ID',
+          {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+          },
+        ).format(computedTotal);
+      }
+
+      // Konversi Tombol Kalkulator Harga Langsung ke WhatsApp VIP Anda
+      function launchCalculatedProject() {
+        const addonsText =
+          selectedAddons.length > 0
+            ? selectedAddons
+                .map((a) => `\n- _${a}_`)
+                .join('')
+            : '\n- _Tidak ada tambahan_';
+
+        const waText =
+          `Halo NEO_CRAFT, saya tertarik untuk melakukan pemesanan paket digital website startup yang saya kalkulasikan:\n\n` +
+          `*Wadah Utama:* ${selectedPackageName}\n` +
+          `*Fitur Tambahan:*${addonsText}\n\n` +
+          `*Estimasi Investasi:* ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(computedTotal)}\n\n` +
+          `Mohon konfirmasi ketersediaan slot pengerjaan dan waktu diskusi singkat untuk bisnis saya. Terima kasih!`;
+
+        const waUrl = `https://wa.me/6282124890162?text=${encodeURIComponent(waText)}`;
+        window.open(waUrl, '_blank');
+        showToast('Beralih ke WhatsApp Developer VIP...');
+      }
+
+      // FORM PENGIRIMAN PORTAL (EMAIL + WA REDIRECT)
+      function handleContactSubmit(event) {
+        event.preventDefault();
+
+        const name =
+          document.getElementById('sender-name').value;
+        const email =
+          document.getElementById('sender-email').value;
+        const desc =
+          document.getElementById('sender-desc').value;
+
+        const emailSubject = `PROPOSAL STARTUP BARU - ${name.toUpperCase()}`;
+        const emailBody =
+          `Yth. Abdul Aziz Muqorrobin (NEO_CRAFT Dev),\n\nProposal rencana pembuatan sistem platform website baru telah diajukan:\n\n` +
+          `========================================\n` +
+          `DATA IDENTITAS KLIEN:\n` +
+          `========================================\n` +
+          `Nama Lengkap : ${name}\n` +
+          `Alamat Email : ${email}\n\n` +
+          `========================================\n` +
+          `DESKRIPSI RENCANA PROYEK:\n` +
+          `========================================\n` +
+          `${desc}\n\n` +
+          `----------------------------------------\n` +
+          `Harap segera lakukan peninjauan proposal dan hubungi pengirim kembali melalui surel atau nomor WhatsApp yang bersangkutan.`;
+
+        // Mailto pemicu aplikasi email lokal
+        const mailtoUrl = `mailto:azizmuqorrobin412@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        window.location.href = mailtoUrl;
+
+        showToast(
+          'Sukses! Menyusun Draf Email Pengiriman...',
+        );
+
+        // Konversi Ganda: Buka WhatsApp agar interaksi berjalan cepat
+        setTimeout(() => {
+          const waText = `Halo NeoCraft Developer, saya baru saja mengirimkan draf formulir konsultasi pembuatan website ke email azizmuqorrobin412@gmail.com.\n\n*Nama Bisnis:* ${name}\n*Kebutuhan:* Konsultasi Bisnis Baru`;
+          const waUrl = `https://wa.me/6282124890162?text=${encodeURIComponent(waText)}`;
+          window.open(waUrl, '_blank');
+        }, 1800);
+      }
+
+      // Menampilkan Notifikasi Toast
+      function showToast(text) {
+        const toast =
+          document.getElementById('toast-message');
+        document.getElementById('toast-text').innerText =
+          text;
+
+        toast.classList.remove(
+          'translate-y-24',
+          'opacity-0',
+        );
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+          toast.classList.add(
+            'translate-y-24',
+            'opacity-0',
+          );
+          toast.classList.remove(
+            'translate-y-0',
+            'opacity-100',
+          );
+        }, 3500);
+      }
+
+      // Newsletter / Subscription feedback
+      function handleNewsletterSubmit(event) {
+        event.preventDefault();
+        const feedback = document.getElementById(
+          'newsletter-feedback',
+        );
+
+        feedback.innerText =
+          'Terima kasih! Anda resmi masuk ke radar akses awal peluncuran template dan diskon musiman kami.';
+        feedback.classList.remove('hidden');
+
+        event.target.reset();
+      }
+    </script>
+  </body>
+</html>
