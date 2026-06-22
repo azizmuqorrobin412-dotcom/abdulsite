@@ -1,0 +1,1767 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Portfolio — Web Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --navy: #0a0e1a;
+        --navy2: #111827;
+        --cyan: #00d4ff;
+        --violet: #7c3aed;
+        --rose: #f472b6;
+        --offwhite: #f0eee8;
+        --muted: #8892a4;
+        --card: #141926;
+        --border: rgba(255, 255, 255, 0.06);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--navy);
+        color: var(--offwhite);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* ── CUSTOM CURSOR ── */
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        pointer-events: none;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--cyan);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease;
+        box-shadow: 0 0 12px var(--cyan);
+      }
+      .cursor-ring {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(0, 212, 255, 0.4);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        transition: all 0.15s ease;
+      }
+      body:has(a:hover) .cursor-ring,
+      body:has(button:hover) .cursor-ring {
+        transform: translate(-50%, -50%) scale(1.6);
+        border-color: var(--cyan);
+      }
+
+      /* ── TRAIL ── */
+      .trail {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: var(--cyan);
+        opacity: 0;
+        animation: trailFade 1s forwards;
+        white-space: nowrap;
+      }
+      @keyframes trailFade {
+        0% {
+          opacity: 0.7;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        padding: 20px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(10, 14, 26, 0.7);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-logo {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        background: linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--violet)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--cyan);
+        transition: width 0.25s;
+      }
+      .nav-links a:hover {
+        color: var(--offwhite);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        padding: 9px 22px;
+        border-radius: 6px;
+        border: 1px solid var(--cyan);
+        color: var(--cyan);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .nav-cta:hover {
+        background: var(--cyan);
+        color: var(--navy);
+      }
+
+      /* ── HERO ── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 120px 60px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 70% 40%,
+            rgba(124, 58, 237, 0.15) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 50% at 20% 80%,
+            rgba(0, 212, 255, 0.08) 0%,
+            transparent 60%
+          );
+      }
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          );
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+          ellipse at center,
+          black 20%,
+          transparent 75%
+        );
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 780px;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--cyan);
+        margin-bottom: 28px;
+      }
+      .hero-eyebrow::before {
+        content: '//';
+        opacity: 0.5;
+      }
+      .hero-headline {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -2px;
+        margin-bottom: 10px;
+      }
+      .hero-headline .accent {
+        background: linear-gradient(
+          135deg,
+          var(--cyan) 0%,
+          var(--violet) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-typing-wrap {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        color: var(--muted);
+        margin-bottom: 28px;
+        min-height: 3rem;
+      }
+      #typing-text {
+        color: var(--offwhite);
+      }
+      .cursor-blink {
+        display: inline-block;
+        width: 3px;
+        height: 1em;
+        background: var(--cyan);
+        vertical-align: text-bottom;
+        animation: blink 0.7s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+      .hero-desc {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--muted);
+        max-width: 560px;
+        margin-bottom: 44px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 32px;
+        border-radius: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--violet)
+        );
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+        transition: all 0.25s;
+        border: none;
+        cursor: none;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 40px rgba(0, 212, 255, 0.4);
+      }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 32px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        color: var(--offwhite);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.25s;
+        cursor: none;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .btn-secondary:hover {
+        border-color: var(--cyan);
+        background: rgba(0, 212, 255, 0.05);
+      }
+      .hero-stats {
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .stat-item {
+        text-align: right;
+      }
+      .stat-num {
+        font-family: 'Syne', sans-serif;
+        font-size: 2.4rem;
+        font-weight: 800;
+        line-height: 1;
+        background: linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--violet)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .stat-label {
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      /* ── SCROLL INDICATOR ── */
+      .scroll-hint {
+        position: absolute;
+        bottom: 36px;
+        left: 60px;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .scroll-line {
+        width: 40px;
+        height: 1px;
+        background: var(--muted);
+        position: relative;
+        overflow: hidden;
+      }
+      .scroll-line::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--cyan);
+        animation: scrollSlide 2s infinite;
+      }
+      @keyframes scrollSlide {
+        to {
+          left: 100%;
+        }
+      }
+
+      /* ── SECTION COMMON ── */
+      section {
+        padding: 100px 60px;
+      }
+      .section-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--cyan);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .section-label::before {
+        content: '';
+        width: 32px;
+        height: 1px;
+        background: var(--cyan);
+      }
+      .section-title {
+        font-family: 'Syne', sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 56px;
+      }
+
+      /* ── SERVICES ── */
+      #services {
+        background: var(--navy2);
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(280px, 1fr)
+        );
+        gap: 20px;
+      }
+      .service-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 36px 32px;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.06),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .service-card:hover {
+        border-color: rgba(0, 212, 255, 0.3);
+        transform: translateY(-4px);
+      }
+      .service-card:hover::before {
+        opacity: 1;
+      }
+      .service-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.15),
+          rgba(124, 58, 237, 0.15)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+      }
+      .service-card h3 {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .service-card p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+      .service-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 18px;
+      }
+      .tech-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        padding: 3px 10px;
+        border-radius: 100px;
+        background: rgba(0, 212, 255, 0.08);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        color: var(--cyan);
+      }
+
+      /* ── PROCESS ── */
+      #process {
+        background: var(--navy);
+      }
+      .process-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-width: 720px;
+      }
+      .process-item {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 24px;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--border);
+        transition: all 0.25s;
+      }
+      .process-item:last-child {
+        border-bottom: none;
+      }
+      .process-item:hover .process-num {
+        color: var(--cyan);
+      }
+      .process-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: var(--border);
+        line-height: 1;
+        transition: color 0.25s;
+      }
+      .process-body h3 {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .process-body p {
+        font-size: 0.9rem;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+
+      /* ── PROJECTS ── */
+      #projects {
+        background: var(--navy2);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(340px, 1fr)
+        );
+        gap: 24px;
+      }
+      .project-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.35s;
+        position: relative;
+      }
+      .project-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(0, 212, 255, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+      .project-thumb {
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #141926,
+          #1e2a42
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .project-thumb-inner {
+        width: 85%;
+        height: 75%;
+        border-radius: 8px;
+        background: var(--navy);
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .mock-bar {
+        height: 28px;
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        gap: 6px;
+      }
+      .mock-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .mock-body {
+        flex: 1;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .mock-line {
+        height: 6px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .mock-line.w60 {
+        width: 60%;
+      }
+      .mock-line.w80 {
+        width: 80%;
+      }
+      .mock-line.w40 {
+        width: 40%;
+      }
+      .mock-accent {
+        height: 40px;
+        border-radius: 6px;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.2),
+          rgba(124, 58, 237, 0.2)
+        );
+        border: 1px solid rgba(0, 212, 255, 0.15);
+      }
+      .project-tag {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        padding: 4px 12px;
+        border-radius: 100px;
+        background: rgba(10, 14, 26, 0.85);
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+      .project-body {
+        padding: 28px 28px 24px;
+      }
+      .project-body h3 {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .project-body p {
+        font-size: 0.875rem;
+        line-height: 1.7;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .project-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .stack-tag {
+        font-size: 0.72rem;
+        padding: 3px 10px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      /* ── TESTIMONIALS ── */
+      #testimonials {
+        background: var(--navy);
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(300px, 1fr)
+        );
+        gap: 20px;
+      }
+      .testimonial-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px 28px;
+      }
+      .stars {
+        color: var(--cyan);
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+        letter-spacing: 2px;
+      }
+      .testimonial-text {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        color: var(--muted);
+        font-style: italic;
+        margin-bottom: 24px;
+      }
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--violet)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #fff;
+      }
+      .author-info .name {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .author-info .role {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      /* ── CONTACT ── */
+      #contact {
+        background: var(--navy2);
+      }
+      .contact-wrap {
+        max-width: 640px;
+      }
+      .contact-desc {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--muted);
+        margin-bottom: 48px;
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .form-group label {
+        font-size: 0.8rem;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 14px 16px;
+        color: var(--offwhite);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        transition: border-color 0.2s;
+        outline: none;
+        resize: none;
+        cursor: none;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.08);
+      }
+      .form-group select option {
+        background: var(--card);
+      }
+      .form-group textarea {
+        min-height: 130px;
+      }
+      .btn-submit {
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 15px 36px;
+        border-radius: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--violet)
+        );
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+        border: none;
+        cursor: none;
+        transition: all 0.25s;
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+      }
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 40px rgba(0, 212, 255, 0.35);
+      }
+      .contact-aside {
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        padding: 18px 22px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--offwhite);
+        transition: all 0.25s;
+      }
+      .contact-link:hover {
+        border-color: rgba(0, 212, 255, 0.3);
+        background: rgba(0, 212, 255, 0.04);
+        transform: translateX(4px);
+      }
+      .cl-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        background: rgba(0, 212, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+      .cl-text .cl-label {
+        font-size: 0.72rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .cl-text .cl-val {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 2px;
+      }
+      #contact {
+        position: relative;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--navy);
+        border-top: 1px solid var(--border);
+        padding: 36px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer-logo {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          var(--cyan),
+          var(--violet)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .footer-copy {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      /* ── FADE IN ANIMATIONS ── */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── GLOW ORB ── */
+      .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+        transition: all 0.6s ease;
+      }
+      #orb1 {
+        width: 600px;
+        height: 600px;
+        background: rgba(0, 212, 255, 0.06);
+        top: -200px;
+        right: -100px;
+      }
+      #orb2 {
+        width: 400px;
+        height: 400px;
+        background: rgba(124, 58, 237, 0.08);
+        bottom: 100px;
+        left: -100px;
+      }
+
+      @media (max-width: 900px) {
+        nav {
+          padding: 16px 24px;
+        }
+        .nav-links {
+          display: none;
+        }
+        #hero {
+          padding: 100px 24px 80px;
+        }
+        .hero-stats {
+          display: none;
+        }
+        section {
+          padding: 70px 24px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .contact-aside {
+          display: none;
+        }
+        footer {
+          flex-direction: column;
+          gap: 12px;
+          text-align: center;
+          padding: 28px 24px;
+        }
+        .scroll-hint {
+          left: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CURSOR -->
+    <div id="cursor">
+      <div class="cursor-dot"></div>
+      <div class="cursor-ring"></div>
+    </div>
+
+    <!-- GLOW ORBS -->
+    <div class="orb" id="orb1"></div>
+    <div class="orb" id="orb2"></div>
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">dev.porto</div>
+      <ul class="nav-links">
+        <li><a href="#services">Layanan</a></li>
+        <li><a href="#process">Proses</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#testimonials">Klien</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hubungi Saya</a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-content fade-in">
+        <div class="hero-eyebrow">
+          Available for projects
+        </div>
+        <h1 class="hero-headline">
+          Saya Membangun<br />
+          <span class="accent">Website</span> yang<br />
+          Bekerja untuk Anda.
+        </h1>
+        <div class="hero-typing-wrap">
+          <span id="typing-text"></span
+          ><span class="cursor-blink"></span>
+        </div>
+        <p class="hero-desc">
+          Full-stack web developer dengan pengalaman
+          menghadirkan solusi digital yang cepat, elegan,
+          dan berdampak nyata bagi bisnis Anda.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary"
+            >Lihat Portofolio →</a
+          >
+          <a href="#contact" class="btn-secondary"
+            >💬 Diskusi Proyek</a
+          >
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item fade-in">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Proyek Selesai</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Klien Puas</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-num">4yr</div>
+          <div class="stat-label">Pengalaman</div>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-label">01 — Layanan</div>
+      <h2 class="section-title">
+        Apa yang Bisa<br />Saya Kerjakan
+      </h2>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">🖥️</div>
+          <h3>Website Company Profile</h3>
+          <p>
+            Tampilan profesional yang merepresentasikan
+            bisnis Anda secara tepat, responsif di semua
+            perangkat, dan dioptimalkan untuk konversi.
+          </p>
+          <div class="service-tech">
+            <span class="tech-badge">React</span
+            ><span class="tech-badge">Next.js</span
+            ><span class="tech-badge">Tailwind</span>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🛒</div>
+          <h3>Toko Online & E-Commerce</h3>
+          <p>
+            Platform belanja yang mulus dengan manajemen
+            produk, payment gateway, dan dashboard admin
+            yang mudah digunakan.
+          </p>
+          <div class="service-tech">
+            <span class="tech-badge">Laravel</span
+            ><span class="tech-badge">MySQL</span
+            ><span class="tech-badge">Midtrans</span>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">⚡</div>
+          <h3>Landing Page & Kampanye</h3>
+          <p>
+            Halaman yang dirancang untuk satu tujuan:
+            mengkonversi pengunjung menjadi pelanggan dengan
+            desain dan copywriting yang tajam.
+          </p>
+          <div class="service-tech">
+            <span class="tech-badge">HTML/CSS</span
+            ><span class="tech-badge">JS</span
+            ><span class="tech-badge">SEO</span>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">📊</div>
+          <h3>Sistem & Aplikasi Web</h3>
+          <p>
+            Sistem manajemen internal, dashboard analitik,
+            atau aplikasi web custom sesuai alur kerja unik
+            bisnis Anda.
+          </p>
+          <div class="service-tech">
+            <span class="tech-badge">Node.js</span
+            ><span class="tech-badge">PostgreSQL</span
+            ><span class="tech-badge">REST API</span>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🔧</div>
+          <h3>Maintenance & Optimasi</h3>
+          <p>
+            Update konten, perbaikan bug, peningkatan
+            kecepatan, dan keamanan website yang sudah Anda
+            miliki.
+          </p>
+          <div class="service-tech">
+            <span class="tech-badge">PageSpeed</span
+            ><span class="tech-badge">Security</span
+            ><span class="tech-badge">CDN</span>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">📱</div>
+          <h3>Desain UI/UX</h3>
+          <p>
+            Wireframe, prototipe, dan desain antarmuka yang
+            intuitif sebelum proses pengkodean dimulai.
+          </p>
+          <div class="service-tech">
+            <span class="tech-badge">Figma</span
+            ><span class="tech-badge">Prototyping</span
+            ><span class="tech-badge">UX Audit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="section-label">02 — Cara Kerja</div>
+      <h2 class="section-title">
+        Proses yang<br />Transparan
+      </h2>
+      <div class="process-list">
+        <div class="process-item fade-in">
+          <div class="process-num">01</div>
+          <div class="process-body">
+            <h3>Konsultasi & Discovery</h3>
+            <p>
+              Kita mulai dengan diskusi mendalam tentang
+              tujuan bisnis, target audiens, dan ekspektasi
+              proyek. Tidak ada biaya di tahap ini.
+            </p>
+          </div>
+        </div>
+        <div class="process-item fade-in">
+          <div class="process-num">02</div>
+          <div class="process-body">
+            <h3>Proposal & Persetujuan</h3>
+            <p>
+              Saya kirimkan proposal lengkap berisi scope,
+              timeline, dan harga yang transparan. Revisi
+              hingga kita sepakat.
+            </p>
+          </div>
+        </div>
+        <div class="process-item fade-in">
+          <div class="process-num">03</div>
+          <div class="process-body">
+            <h3>Desain & Prototyping</h3>
+            <p>
+              Mockup desain dibuat di Figma sehingga Anda
+              bisa melihat dan memberi masukan sebelum satu
+              baris kode pun ditulis.
+            </p>
+          </div>
+        </div>
+        <div class="process-item fade-in">
+          <div class="process-num">04</div>
+          <div class="process-body">
+            <h3>Development & Review</h3>
+            <p>
+              Pengembangan dengan update berkala. Anda akan
+              melihat perkembangan setiap minggu dan bisa
+              memberikan feedback langsung.
+            </p>
+          </div>
+        </div>
+        <div class="process-item fade-in">
+          <div class="process-num">05</div>
+          <div class="process-body">
+            <h3>Launch & Handover</h3>
+            <p>
+              Website diluncurkan, semua akses dan
+              dokumentasi diserahkan penuh ke Anda, beserta
+              garansi perbaikan 30 hari.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">03 — Portofolio</div>
+      <h2 class="section-title">Proyek Pilihan</h2>
+      <div class="projects-grid">
+        <div class="project-card fade-in">
+          <div class="project-thumb">
+            <div class="project-thumb-inner">
+              <div class="mock-bar">
+                <div
+                  class="mock-dot"
+                  style="background: #ff5f57"
+                ></div>
+                <div
+                  class="mock-dot"
+                  style="background: #febc2e"
+                ></div>
+                <div
+                  class="mock-dot"
+                  style="background: #28c840"
+                ></div>
+              </div>
+              <div class="mock-body">
+                <div class="mock-accent"></div>
+                <div class="mock-line w80"></div>
+                <div class="mock-line w60"></div>
+                <div class="mock-line w40"></div>
+              </div>
+            </div>
+            <span class="project-tag">E-Commerce</span>
+          </div>
+          <div class="project-body">
+            <h3>Toko Fashion Online — StyleHaus</h3>
+            <p>
+              Platform belanja multi-kategori dengan fitur
+              wishlist, review produk, dan integrasi
+              Midtrans. Omset meningkat 240% dalam 3 bulan
+              pertama.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Laravel</span
+              ><span class="stack-tag">Vue.js</span
+              ><span class="stack-tag">MySQL</span
+              ><span class="stack-tag">Midtrans</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div
+            class="project-thumb"
+            style="
+              background: linear-gradient(
+                135deg,
+                #1a1e2e,
+                #2a1a3e
+              );
+            "
+          >
+            <div class="project-thumb-inner">
+              <div class="mock-bar">
+                <div
+                  class="mock-dot"
+                  style="background: #ff5f57"
+                ></div>
+                <div
+                  class="mock-dot"
+                  style="background: #febc2e"
+                ></div>
+                <div
+                  class="mock-dot"
+                  style="background: #28c840"
+                ></div>
+              </div>
+              <div class="mock-body">
+                <div class="mock-line w60"></div>
+                <div
+                  class="mock-accent"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      rgba(124, 58, 237, 0.3),
+                      rgba(244, 114, 182, 0.2)
+                    );
+                  "
+                ></div>
+                <div class="mock-line w80"></div>
+                <div class="mock-line w40"></div>
+              </div>
+            </div>
+            <span class="project-tag">SaaS Dashboard</span>
+          </div>
+          <div class="project-body">
+            <h3>
+              Dashboard Manajemen Properti — PropTrack
+            </h3>
+            <p>
+              Sistem pengelolaan 300+ unit properti dengan
+              laporan real-time, manajemen tenant, dan
+              notifikasi otomatis.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">Next.js</span
+              ><span class="stack-tag">Node.js</span
+              ><span class="stack-tag">PostgreSQL</span
+              ><span class="stack-tag">Recharts</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div
+            class="project-thumb"
+            style="
+              background: linear-gradient(
+                135deg,
+                #1a2414,
+                #1e3228
+              );
+            "
+          >
+            <div class="project-thumb-inner">
+              <div class="mock-bar">
+                <div
+                  class="mock-dot"
+                  style="background: #ff5f57"
+                ></div>
+                <div
+                  class="mock-dot"
+                  style="background: #febc2e"
+                ></div>
+                <div
+                  class="mock-dot"
+                  style="background: #28c840"
+                ></div>
+              </div>
+              <div class="mock-body">
+                <div
+                  class="mock-accent"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      rgba(0, 212, 120, 0.2),
+                      rgba(0, 180, 100, 0.1)
+                    );
+                  "
+                ></div>
+                <div class="mock-line w80"></div>
+                <div class="mock-line w60"></div>
+                <div class="mock-line w40"></div>
+              </div>
+            </div>
+            <span class="project-tag">Company Profile</span>
+          </div>
+          <div class="project-body">
+            <h3>Website Klinik Gigi — DentalCare</h3>
+            <p>
+              Company profile modern dengan sistem booking
+              online, galeri treatment, dan halaman dokter.
+              Load time &lt;1.5 detik.
+            </p>
+            <div class="project-stack">
+              <span class="stack-tag">React</span
+              ><span class="stack-tag">Tailwind</span
+              ><span class="stack-tag">Supabase</span
+              ><span class="stack-tag">SEO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="section-label">04 — Testimonial</div>
+      <h2 class="section-title">Kata Mereka</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Hasilnya melebihi ekspektasi. Website kami naik
+            di Google dalam 2 bulan dan bounce rate turun
+            drastis. Komunikasi selalu responsif dan
+            profesional."
+          </p>
+          <div class="testimonial-author">
+            <div class="avatar">AR</div>
+            <div class="author-info">
+              <div class="name">Andi Rahmat</div>
+              <div class="role">
+                CEO, StyleHaus Indonesia
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Dashboard yang dibuat sangat memudahkan tim
+            kami mengelola ratusan properti. Fitur laporan
+            otomatis menghemat 10 jam kerja per minggu."
+          </p>
+          <div class="testimonial-author">
+            <div class="avatar">SM</div>
+            <div class="author-info">
+              <div class="name">Siti Maharani</div>
+              <div class="role">
+                Operations Manager, PropTrack
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Proses kerjanya transparan dan tepat waktu.
+            Desainnya cantik dan pasien kami sering memuji
+            tampilannya. Booking online kami meningkat 3x
+            lipat!"
+          </p>
+          <div class="testimonial-author">
+            <div class="avatar">DK</div>
+            <div class="author-info">
+              <div class="name">drg. Dewi Kartika</div>
+              <div class="role">
+                Owner, DentalCare Clinic
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-wrap">
+        <div class="section-label">05 — Kontak</div>
+        <h2 class="section-title">
+          Siap Mulai<br />Proyek Anda?
+        </h2>
+        <p class="contact-desc">
+          Ceritakan kebutuhan Anda dan saya akan merespons
+          dalam 24 jam. Konsultasi awal gratis.
+        </p>
+        <form
+          class="contact-form fade-in"
+          onsubmit="handleSubmit(event)"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input
+                type="text"
+                placeholder="Budi Santoso"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                placeholder="budi@perusahaan.com"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Jenis Layanan</label>
+            <select>
+              <option value="">Pilih layanan...</option>
+              <option>Website Company Profile</option>
+              <option>Toko Online / E-Commerce</option>
+              <option>Landing Page</option>
+              <option>Sistem / Aplikasi Web</option>
+              <option>Maintenance & Optimasi</option>
+              <option>Desain UI/UX</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ceritakan Proyek Anda</label>
+            <textarea
+              placeholder="Saya ingin membuat website untuk bisnis saya di bidang... dengan fitur..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            Kirim Pesan →
+          </button>
+        </form>
+      </div>
+      <div class="contact-aside">
+        <div class="contact-links">
+          <a
+            href="https://wa.me/6281234567890"
+            class="contact-link"
+            target="_blank"
+          >
+            <div class="cl-icon">💬</div>
+            <div class="cl-text">
+              <div class="cl-label">WhatsApp</div>
+              <div class="cl-val">+62 812-3456-7890</div>
+            </div>
+          </a>
+          <a
+            href="mailto:hello@devporto.id"
+            class="contact-link"
+          >
+            <div class="cl-icon">✉️</div>
+            <div class="cl-text">
+              <div class="cl-label">Email</div>
+              <div class="cl-val">hello@devporto.id</div>
+            </div>
+          </a>
+          <a
+            href="https://instagram.com/devporto"
+            class="contact-link"
+            target="_blank"
+          >
+            <div class="cl-icon">📸</div>
+            <div class="cl-text">
+              <div class="cl-label">Instagram</div>
+              <div class="cl-val">@devporto</div>
+            </div>
+          </a>
+          <a
+            href="https://linkedin.com"
+            class="contact-link"
+            target="_blank"
+          >
+            <div class="cl-icon">💼</div>
+            <div class="cl-text">
+              <div class="cl-label">LinkedIn</div>
+              <div class="cl-val">
+                linkedin.com/in/devporto
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">dev.porto</div>
+      <div class="footer-copy">
+        © 2025 — Dibuat dengan ☕ dan banyak commit
+      </div>
+    </footer>
+
+    <!-- SUCCESS TOAST -->
+    <div
+      id="toast"
+      style="
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 9999;
+        background: var(--card);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: 12px;
+        padding: 18px 24px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        font-size: 0.9rem;
+        color: var(--offwhite);
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.35s
+          cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: none;
+      "
+    >
+      ✅ Pesan terkirim! Saya akan merespons dalam 24 jam.
+    </div>
+
+    <script>
+      // ── CURSOR ──
+      const cursor = document.getElementById('cursor');
+      const dot = cursor.querySelector('.cursor-dot');
+      const ring = cursor.querySelector('.cursor-ring');
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.style.left = mx + 'px';
+        dot.style.top = my + 'px';
+      });
+
+      function lerpCursor() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(lerpCursor);
+      }
+      lerpCursor();
+
+      // ── CODE TRAIL ──
+      const snippets = [
+        'const',
+        'function',
+        'return',
+        'async',
+        'await',
+        'true',
+        'null',
+        '{}',
+        '[]',
+        '=>',
+        'let',
+        'const',
+        'import',
+      ];
+      let lastTrail = 0;
+      document.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastTrail < 220) return;
+        lastTrail = now;
+        const el = document.createElement('div');
+        el.className = 'trail';
+        el.textContent =
+          snippets[
+            Math.floor(Math.random() * snippets.length)
+          ];
+        el.style.left =
+          e.clientX + (Math.random() * 30 - 15) + 'px';
+        el.style.top = e.clientY + 'px';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1000);
+      });
+
+      // ── TYPING ──
+      const phrases = [
+        'Full-Stack Developer.',
+        'UI/UX Enthusiast.',
+        'Problem Solver.',
+        'Your Tech Partner.',
+      ];
+      let pi = 0,
+        ci = 0,
+        deleting = false;
+      const el = document.getElementById('typing-text');
+
+      function type() {
+        const current = phrases[pi];
+        if (!deleting) {
+          el.textContent = current.slice(0, ++ci);
+          if (ci === current.length) {
+            setTimeout(() => {
+              deleting = true;
+              type();
+            }, 1800);
+            return;
+          }
+        } else {
+          el.textContent = current.slice(0, --ci);
+          if (ci === 0) {
+            deleting = false;
+            pi = (pi + 1) % phrases.length;
+          }
+        }
+        setTimeout(type, deleting ? 40 : 80);
+      }
+      type();
+
+      // ── SCROLL FADE IN ──
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+      document
+        .querySelectorAll('.fade-in')
+        .forEach((el) => observer.observe(el));
+
+      // ── FORM SUBMIT ──
+      function handleSubmit(e) {
+        e.preventDefault();
+        const toast = document.getElementById('toast');
+        toast.style.transform = 'translateY(0)';
+        toast.style.opacity = '1';
+        setTimeout(() => {
+          toast.style.transform = 'translateY(100px)';
+          toast.style.opacity = '0';
+        }, 4000);
+        e.target.reset();
+      }
+
+      // ── 3D TILT on project cards ──
+      document
+        .querySelectorAll('.project-card')
+        .forEach((card) => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x =
+              (e.clientX - rect.left) / rect.width - 0.5;
+            const y =
+              (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `translateY(-6px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg)`;
+            card.style.transition = 'transform .05s';
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.transition = 'all .35s';
+          });
+        });
+
+      // ── ACTIVE NAV ──
+      const sections =
+        document.querySelectorAll('section[id]');
+      const navLinks =
+        document.querySelectorAll('.nav-links a');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach((s) => {
+          if (window.scrollY >= s.offsetTop - 120)
+            current = s.id;
+        });
+        navLinks.forEach((a) => {
+          a.style.color =
+            a.getAttribute('href') === '#' + current
+              ? 'var(--offwhite)'
+              : '';
+        });
+      });
+    </script>
+  </body>
+</html>
